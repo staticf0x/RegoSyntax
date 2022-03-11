@@ -1,0 +1,48 @@
+%YAML 1.2
+---
+name: Rego
+file_extensions:
+  - rego
+scope: source.rego
+
+contexts:
+  main:
+    - match: ^(package) (\w+)
+      captures:
+        1: keyword.control.rego
+        2: identifier
+
+    - match: (\w+) :=
+      captures:
+        1: entity.name.variable
+
+    - match: \{
+      scope: punctuation.section.block.start.rego
+
+    - match: \}
+      scope: punctuation.section.block.end.rego
+
+    - match: '"'
+      push: string
+
+    - match: ^#.+$
+      scope: comment.line
+
+    - match: ^(deny|allow|violation)(\[\w+\])?
+      captures:
+        1: entity.name.function
+        2: entity.name.variable
+
+    - match: (input)\.
+      captures:
+        1: variable.language
+
+    - match: ^some
+      scope: storage.type
+
+  string:
+    - meta_scope: string.quoted.rego
+    - match: \\.
+      scope: constant.character.escape.rego
+    - match: '"'
+      pop: true
