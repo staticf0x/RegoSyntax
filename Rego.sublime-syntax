@@ -25,8 +25,8 @@ contexts:
     - match: '"'
       push: string
 
-    - match: ^\s*#.+$
-      scope: comment.line
+    - match: ^\s*#.*\n
+      scope: comment.line.number-sign.rego
 
     - match: ^(deny|allow|violation)(\[\w+\])?
       captures:
