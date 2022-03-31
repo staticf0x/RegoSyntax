@@ -25,7 +25,7 @@ contexts:
     - match: '"'
       push: string
 
-    - match: ^#.+$
+    - match: ^\s*#.+$
       scope: comment.line
 
     - match: ^(deny|allow|violation)(\[\w+\])?
