@@ -40,6 +40,9 @@ contexts:
     - match: ^\s*some
       scope: storage.type
 
+    - match: \bnot\b
+      scope: keyword.operator.logical.rego
+
   string:
     - meta_scope: string.quoted.rego
     - match: \\.
