@@ -17,7 +17,7 @@ contexts:
 
     - match: ^\s*(\w+) :=
       captures:
-        1: entity.name.variable.rego
+        1: variable.other.rego
 
     - match: \{
       scope: punctuation.section.block.start.rego
