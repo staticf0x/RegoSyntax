@@ -28,10 +28,10 @@ contexts:
     - match: ^\s*#.*\n
       scope: comment.line.number-sign.rego
 
-    - match: ^(deny|allow|violation)(\[\w+\])?
+    - match: ^(deny|allow|violation)_*([\w_]+)*(\[.+\])*
       captures:
-        1: entity.name.function
-        2: entity.name.variable
+        1: keyword.control.rego
+        2: entity.name.function
 
     - match: (input)\.
       captures:
