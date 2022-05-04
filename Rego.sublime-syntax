@@ -12,9 +12,9 @@ contexts:
         1: keyword.control.rego
         2: identifier
 
-    - match: (\w+) :=
+    - match: ^\s*(\w+) :=
       captures:
-        1: entity.name.variable
+        1: entity.name.variable.rego
 
     - match: \{
       scope: punctuation.section.block.start.rego
