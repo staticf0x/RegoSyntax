@@ -5,6 +5,9 @@ file_extensions:
   - rego
 scope: source.rego
 
+variables:
+  builtin_functions: \b(count|sprintf|concat)\b
+
 contexts:
   main:
     - match: ^(package) (\w+)
@@ -42,6 +45,12 @@ contexts:
 
     - match: \bnot\b
       scope: keyword.operator.logical.rego
+
+    - include: builtins
+
+  builtins:
+    - match: '{{builtin_functions}}'
+      scope: support.function.builtin.rego
 
   string:
     - meta_scope: string.quoted.rego
